@@ -23,7 +23,7 @@ package object staticcontent {
   def webjarService[F[_]: Sync](config: WebjarService.Config[F]): HttpService[F] =
     WebjarService(config)
 
-  private[staticcontent] val sanitize = "\\.\\.".r.replaceAllIn(_: String, ".")
+  private[staticcontent] val sanitize = "\\.+".r.replaceAllIn(_: String, ".")
 
   private[staticcontent] val AcceptRangeHeader = `Accept-Ranges`(RangeUnit.Bytes)
 
